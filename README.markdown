@@ -1,8 +1,6 @@
 Introduction
 ============
-Stamp.Net is a library inspired by the [Stamp] [stamp_src] library for the Ruby language. Its purpose is to format string representation of dates in .NET by an example, rather than the standard .NET format strings. For more information on the original Stamp library please see the [git repository] [stamp_src].
-
-	[stamp_src]: https://github.com/jeremyw/stamp
+Stamp.Net is a library inspired by the [Stamp][stamp_src] library for the Ruby language. Its purpose is to format string representation of dates in .NET by an example, rather than the standard .NET format strings. For more information on the original Stamp library please see the [git repository][stamp_src].
 	
 Installation
 ============
@@ -15,3 +13,5 @@ Usage
 =====
 
 Coming soon...
+
+  [stamp_src]: https://github.com/jeremyw/stamp
