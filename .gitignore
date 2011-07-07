@@ -1,0 +1,7 @@
+﻿# Ignore bin and obj folders
+bin
+obj
+
+# Ignore user-specific solution settings
+
+*.suo
