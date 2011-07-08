@@ -64,15 +64,15 @@ namespace Stamp.Net
             }
             DateTime dateToFormat = (DateTime)arg;
 
-            Regex exampleFormat = new Regex(format);
-            if (exampleFormat.IsMatch(DateTimeExampleFormatter.ExampleDateFormat1))
+            foreach (string key in formatMapping.Keys)
             {
-                return dateToFormat.ToString("MMM dd, YY");
+                Regex exampleFormat = new Regex(key);
+                if (exampleFormat.IsMatch(format))
+                {
+                    return dateToFormat.ToString(formatMapping[key]);
+                }
             }
-            else
-            {
-                throw new FormatException(String.Format("The format '{0}' is invalid", format));
-            }
+            throw new FormatException(String.Format("The format '{0}' is invalid", format));
         }
 
         /// <summary>
@@ -92,6 +92,17 @@ namespace Stamp.Net
                 return String.Empty;
         }
 
-        private const string ExampleDateFormat1 = @"^(?<Month>September|January|February|March|April|June|July|August|October|November|December)\s(?<Day>[0-9][0-9]*),\s(?<Year>[0-9][0-9]([0-9][0-9]))$";
+        private const string FullMonthTwoDigitDayFullYear = @"^(?<Month>September|January|February|March|April|June|July|August|October|November|December)\s(?<Day>[0-9][0-9]),\s(?<Year>[0-9][0-9]([0-9][0-9]))$";
+        private const string ThreeLetterMonthTwoDigitDayFullYear = @"^(?<Month>Sep|Jan|Feb|Ma|Apr|Jun|Jul|Aug|Oct|Nov|Dec)\s(?<Day>[0-9][0-9]),\s(?<Year>[0-9][0-9]([0-9][0-9]))$";
+        private const string ThreeLetterMonthTwoDigitDay = @"^(?<Month>Sep|Jan|Feb|Ma|Apr|Jun|Jul|Aug|Oct|Nov|Dec)\s(?<Day>[0-9][0-9])$";
+        private const string DayOfWeekFullMonthTwoDigitDayFullYear = @"^(?<DayOfWeek>Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),\s(?<Month>September|January|February|March|April|June|July|August|October|November|December)\s(?<Day>[0-9][0-9]),\s(?<Year>[0-9][0-9][0-9][0-9])$";
+        
+        private static readonly Dictionary<string, string> formatMapping = new Dictionary<string, string>
+        {
+            { FullMonthTwoDigitDayFullYear, "MMMM dd, yyyy"}, // "September 26, 1984"
+            { ThreeLetterMonthTwoDigitDayFullYear, "MMM dd, yyyy"}, // "Sep 26, 1984"
+            { ThreeLetterMonthTwoDigitDay, "MMM dd"}, // "Sep 26"
+            { DayOfWeekFullMonthTwoDigitDayFullYear, "dddd, MMM dd, yyyy"} // "Monday, September 26, 1984"
+        };
     }
 }

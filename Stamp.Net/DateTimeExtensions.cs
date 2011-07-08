@@ -19,7 +19,7 @@ namespace Stamp.Net
         /// <returns>A string representation of the <see cref="DateTime"/> object</returns>
         public static string Format(this DateTime dateTime, string example)
         {
-            return dateTime.ToStringExtended("June 24, 2033", new DateTimeExampleFormatter());
+            return dateTime.ToStringExtended(example, new DateTimeExampleFormatter());
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stamp.Net
             var formatter = provider.GetFormat(typeof(DateTimeFormatInfo)) as ICustomFormatter;
             if (formatter != null)
             {
-                formatter.Format(format, dateTime, provider);
+                return formatter.Format(format, dateTime, provider);
             }
             throw new ArgumentException("The format provider argument did not return an instance that implements ICustomFormatter", "provider");
         }
