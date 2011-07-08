@@ -12,6 +12,13 @@ The repository contains two Visual Studio projects - a class library for the uti
 Usage
 =====
 
-Coming soon...
+Stamp.Net provides an extension method for the DateTime class, that you can call to get a string representation. The method accepts a single parameter with an example format as string. The formats that are implemented until now are seen in the following example:
+
+    var currentDate = DateTime.Now;
+    
+    Console.WriteLine(currentDate.Format("June 24, 2001"));
+    Console.WriteLine(currentDate.Format("Jun 23, 2345"));
+    Console.WriteLine(currentDate.Format("Jun 09"));
+    Console.WriteLine(currentDate.Format("Monday, June 09, 2003"));
 
   [stamp_src]: https://github.com/jeremyw/stamp
