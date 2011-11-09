@@ -15,6 +15,7 @@ namespace StampNetConsole
             Console.WriteLine(currentDate.Format("Jun 23, 2345"));
             Console.WriteLine(currentDate.Format("Jun 09"));
             Console.WriteLine(currentDate.Format("Monday, June 09, 2003"));
+            Console.WriteLine(currentDate.Format("Mon Sep 09"));
             Console.ReadLine();
         }
     }
