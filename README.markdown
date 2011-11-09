@@ -27,5 +27,8 @@ Stamp.Net provides an extension method for the DateTime class, that you can call
 	
 	// Full day of week, full month name, two-digit day, four-digit year
     Console.WriteLine(currentDate.Format("Monday, June 09, 2003"));
+	
+	// Three-letter day of week, Three-letter month name, two-digit day
+	Console.WriteLine(currentDate.Format("Mon Sep 09"));
 
   [stamp_src]: https://github.com/jeremyw/stamp
